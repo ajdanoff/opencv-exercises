@@ -37,10 +37,10 @@ triangle_poly_half = [
 
 # red circle
 circle_rad = rad - 10 - int(circle_thikness/2)
-cv2.circle(img, (triangle_center[0], triangle_center[1] - rad), circle_rad, (0,0,255), circle_thikness)
+cv2.circle(img, (triangle_center[0], triangle_center[1] - rad), circle_rad, (0, 0, 255), circle_thikness)
 
 # green circle
-cv2.circle(img, (triangle_center[0] - rad, triangle_center[1] + rad), circle_rad, (0,255,0), circle_thikness)
+cv2.circle(img, (triangle_center[0] - rad, triangle_center[1] + rad), circle_rad, (0, 255, 0), circle_thikness)
 
 pts = np.array(triangle_poly, np.int32)
 # pts = pts.reshape((-1, 1, 2))
@@ -48,7 +48,7 @@ pts = np.array(triangle_poly, np.int32)
 cv2.fillPoly(img, [pts], backgr_color)
 
 # blue circle
-cv2.circle(img, (triangle_center[0] + half_height_width, triangle_center[1] + rad), circle_rad, (255,0,0), circle_thikness)
+cv2.circle(img, (triangle_center[0] + half_height_width, triangle_center[1] + rad), circle_rad, (255, 0, 0), circle_thikness)
 
 # half triangle
 pts_half = np.array(triangle_poly_half, np.int32)
@@ -73,4 +73,7 @@ cv2.namedWindow('drawing', cv2.WINDOW_NORMAL)
 cv2.imshow('drawing', img)
 k = cv2.waitKey(0)
 if k == 27:
+    cv2.destroyAllWindows()
+elif k == ord('s'):
+    cv2.imwrite('opencv_logo.png', img)
     cv2.destroyAllWindows()
